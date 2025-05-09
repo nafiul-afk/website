@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nafiul Islam - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #61dafb;
+            --secondary-color: #1a1a2e;
+            --text-color: #ffffff;
+            --light-bg: #121212;
+            --white: #2c2c2c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .logo a {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 85px;
+            padding: 2rem 5%;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        h1, h2, h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('/api/placeholder/1200/800') center center/cover;
+            color: var(--white);
+            margin-top: -85px;
+            padding-top: 85px;
+        }
+
+        #hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        /* Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certificate-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .certificate-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certificate-info {
+            padding: 1.5rem;
+        }
+
+        .certificate-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .certificate-link:hover {
+            background-color: #2980b9;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-bar {
+            background-color: #e0e0e0;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background-color: #e0e0e0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background-color: #2980b9;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Theme Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 26px;
+            position: relative;
+            width: 50px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+        }
+
+        .slider:before {
+            background-color: white;
+            bottom: 3px;
+            content: "";
+            height: 20px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 20px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .fa-sun {
+            color: #f39c12;
+            font-size: 14px;
+        }
+
+        .fa-moon {
+            color: #192a56;
+            font-size: 14px;
+        }
+
+        input:checked + .slider {
+            background-color: #2c3e50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Social Button Animations */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+            z-index: 1;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.2);
+        }
+
+        .social-btn:hover::before {
+            transform: translateY(0);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .social-btn span {
+            z-index: 2;
+        }
+
+        .github-btn {
+            background-color: #24292e;
+        }
+
+        .linkedin-btn {
+            background-color: #0077b5;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                background-color: var(--secondary-color);
+                height: calc(100vh - 70px);
+                width: 50%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transform: translateX(100%);
+                transition: var(--transition);
+                opacity: 0;
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .burger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .burger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Nafiul Islam</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </label>
+            </div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Nafiul Islam</h1>
+            <p>Academic Excellence | GPA 5.00 Golden in HSC & SSC</p>
+            <a href="#contact" class="cta-btn">Get In Touch</a>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="https://via.placeholder.com/350x350?text=Profile" alt="Your Name">
+                </div>
+                <div class="profile-text">
+                    <p>Hello! I'm Nafiul Islam, a Data Science student at United International University and an academically distinguished student with a passion for excellence and continuous learning.</p>
+                    <p>I have achieved the highest academic honor in Bangladesh's education system with a perfect GPA 5.00 (Golden) in both HSC and SSC examinations, demonstrating my commitment to academic excellence and rigorous study.</p>
+                    <p>My consistent academic achievements reflect my dedication, analytical thinking abilities, and strong work ethic. I approach learning with enthusiasm and strive to apply theoretical knowledge to practical situations.</p>
+                    <p>I am continuously developing my skills through additional courses and certifications to complement my formal education and prepare for future challenges in my field.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates">
+            <h2>Certificates & Qualifications</h2>
+            <div class="certificates-grid">
+                <!-- Certificate 1 -->
+                <div class="certificate-card">
+                    <div class="certificate-img">
+                        <img src="https://via.placeholder.com/400x200?text=Certificate" alt="Certificate 1">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>HSC Golden GPA 5.00</h3>
+                        <p>Bangladesh Education Board • Year</p>
+                        <p>Achieved the highest possible grade point average (5.00) with Golden distinction in the Higher Secondary Certificate examination, demonstrating exceptional academic performance across all subjects.</p>
+                        
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="certificate-card">
+                    <div class="certificate-img">
+                        <img src="https://via.placeholder.com/400x200?text=Certificate" alt="Certificate 2">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>SSC Golden GPA 5.00</h3>
+                        <p>Bangladesh Education Board • Year</p>
+                        <p>Earned the highest possible grade point average (5.00) with Golden distinction in the Secondary School Certificate examination, showcasing academic excellence and dedication to studies.</p>
+                        
+                    </div>
+                </div>
+
+                
+<!-- Certificate 3 -->
+<div class="certificate-card">
+    <div class="certificate-img">
+        <img src="https://via.placeholder.com/400x200?text=Certificate" alt="DataCamp Certificate 1">
+    </div>
+    <div class="certificate-info">
+        <h3>Introduction to Python</h3>
+        <p>DataCamp • 2024</p>
+        <p>Completed DataCamp's course on Introduction to Python.</p>
+        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/d3d19c37b9d13b0928cf75580213e3e2c5e8aba8" class="certificate-link" target="_blank">View Certificate</a>
+    </div>
+</div>
+
+<!-- Certificate 4 -->
+<div class="certificate-card">
+    <div class="certificate-img">
+        <img src="https://via.placeholder.com/400x200?text=Certificate" alt="DataCamp Certificate 2">
+    </div>
+    <div class="certificate-info">
+        <h3>Understanding Data Science</h3>
+        <p>DataCamp • 2024</p>
+        <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/13f9ab1429a1828bda28b26169bcf197c39e5f38" class="certificate-link" target="_blank">View Certificate</a>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <!-- Technical Skills -->
+                <div class="skill-category">
+                    
+    <h3>Technical Skills</h3>
+    <ul class="skill-list">
+        <li>
+            <span class="skill-name">Python</span>
+            <div class="skill-bar">
+                <div class="skill-level" style="width: 80%"></div>
+            </div>
+        </li>
+    </ul>
+    
+                </div>
+
+                <!-- Professional Skills -->
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <span class="skill-name">Project Management</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Team Leadership</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Problem Solving</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Communication</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <p>Feel free to reach out to me for collaborations, job opportunities, or just to say hello!</p>
+                <div class="social-buttons">
+                    <a href="https://github.com/Nafiul-Islam-DS" target="_blank" class="social-btn github-btn">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nafiul-islam-739359279/" target="_blank" class="social-btn linkedin-btn">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:nafiulislammmm@gmail.com"><i class="fas fa-envelope"></i></a>
+                    
+                    
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Nafiul Islam. All Rights Reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Theme Switcher
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', currentTheme);
+if (currentTheme === 'dark') {
+    toggleSwitch.checked = true;
+}
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+        // Mobile Navigation
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('active');
+            
+            // Toggle Burger Animation
+            burger.classList.toggle('active');
+            
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                burger.classList.remove('active');
+                navLinks.forEach(link => {
+                    link.style.animation = '';
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animations on Scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.certificate-card, .project-card, .skill-category');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Add initial styles for animation
+        const elementsToAnimate = document.querySelectorAll('.certificate-card, .project-card, .skill-category');
+        elementsToAnimate.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Run animation check on load and scroll
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Form Submission (this would need to be connected to a backend service)
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For now, we'll just show an alert
+            alert('Thank you for your message!');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>

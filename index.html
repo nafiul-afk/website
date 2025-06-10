@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nafiul Islam - Data Science Student</title>
+    <script>
+      // Tailwind dark mode class strategy
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {},
+        },
+      }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
@@ -26,6 +45,9 @@
         .hero-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
+        .dark .hero-bg {
+            background: linear-gradient(135deg, #232946 0%, #303346 100%);
+        }
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
@@ -41,20 +63,30 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+    <header class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="text-xl font-bold gradient-text">Nafiul Islam</div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                    <a href="#skills" class="text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
-                    <a href="#journey" class="text-gray-600 hover:text-gray-900 transition-colors">Journey</a>
-                    <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                    <a href="#about" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
+                    <a href="#journey" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors">Journey</a>
+                    <a href="#contact" class="text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
                 </div>
-                <button class="md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Dark mode toggle button -->
+                <button id="dark-toggle" class="ml-4 w-9 h-9 rounded-lg flex items-center justify-center border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle dark mode">
+                    <svg id="sun" class="w-5 h-5 text-yellow-400 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2m0 18v2m9-9h-2M5 12H3m15.36 6.36l-1.42-1.42M6.36 6.36L4.94 4.94m12.02 0l-1.42 1.42M6.36 17.64l-1.42 1.42"/>
+                    </svg>
+                    <svg id="moon" class="w-5 h-5 text-gray-600 hidden dark:inline" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 0112.21 3c0 .31 0 .62.02.93A9 9 0 0021 12.79z"/>
+                    </svg>
+                </button>
+                <button class="md:hidden ml-2">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
@@ -63,7 +95,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 hero-bg text-white">
+    <section class="pt-24 pb-16 hero-bg text-white dark:text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 <div class="lg:w-1/2 mb-12 lg:mb-0">
@@ -110,81 +142,81 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20">
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-16 gradient-text">About Me</h2>
             <div class="max-w-4xl mx-auto text-lg leading-relaxed space-y-6">
-                <p>I'm Nafiul Islam, a dedicated Data Science student at United International University with a passion for artificial intelligence and machine learning. My journey in data science is driven by curiosity and the desire to solve real-world problems through data-driven insights.</p>
-                <p>Every day, I immerse myself in learning new ML and AI frameworks, constantly expanding my knowledge and skills. From data manipulation with Pandas to creating interactive visualizations with Streamlit, I'm building a comprehensive toolkit for data science.</p>
-                <p>I believe in the power of continuous learning and staying updated with the latest trends in AI and machine learning. My goal is to contribute to innovative projects that make a positive impact on society through intelligent data solutions.</p>
+                <p>I'm Nafiul Islam, a dedicated Data Science student at United International University with a passion for artificial intelligence and machine learning. My journey in data science is [...]</p>
+                <p>Every day, I immerse myself in learning new ML and AI frameworks, constantly expanding my knowledge and skills. From data manipulation with Pandas to creating interactive visualizat[...]</p>
+                <p>I believe in the power of continuous learning and staying updated with the latest trends in AI and machine learning. My goal is to contribute to innovative projects that make a posi[...]</p>
                 <p>When I'm not coding or studying, you can find me exploring new datasets, experimenting with different algorithms, or sharing my learning journey on social media.</p>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
+    <section id="skills" class="py-20 bg-white dark:bg-gray-800 dark:text-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Skills</h2>
             <p class="text-center text-xl mb-16 max-w-3xl mx-auto">Here are the technologies and tools I'm working with in my data science journey.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Programming Languages -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">🐍</div>
                     <h3 class="text-2xl font-bold mb-4">Programming</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Python</span>
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Python</span>
                     </div>
                 </div>
 
                 <!-- Data Analysis -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">📊</div>
                     <h3 class="text-2xl font-bold mb-4">Data Analysis</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Pandas</span>
-                        <span class="bg-purple-100 text-purple-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">NumPy</span>
+                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Pandas</span>
+                        <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">NumPy</span>
                     </div>
                 </div>
 
                 <!-- Data Visualization -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">📈</div>
                     <h3 class="text-2xl font-bold mb-4">Visualization</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Matplotlib</span>
-                        <span class="bg-indigo-100 text-indigo-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Seaborn</span>
+                        <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Matplotlib</span>
+                        <span class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Seaborn</span>
                     </div>
                 </div>
 
                 <!-- Web Apps -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">🌐</div>
                     <h3 class="text-2xl font-bold mb-4">Web Applications</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-red-100 text-red-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Streamlit</span>
+                        <span class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Streamlit</span>
                     </div>
                 </div>
 
                 <!-- Version Control -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">⚙️</div>
                     <h3 class="text-2xl font-bold mb-4">Version Control</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-gray-100 text-gray-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Git</span>
-                        <span class="bg-black text-white px-3 py-2 rounded-full text-sm font-medium skill-tag">GitHub</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Git</span>
+                        <span class="bg-black dark:bg-gray-800 text-white dark:text-gray-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">GitHub</span>
                     </div>
                 </div>
 
                 <!-- Cloud & AI -->
-                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 card-hover">
                     <div class="text-4xl mb-4">☁️</div>
                     <h3 class="text-2xl font-bold mb-4">Cloud & AI</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-orange-100 text-orange-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">AWS</span>
-                        <span class="bg-blue-100 text-blue-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Azure</span>
-                        <span class="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Llama Prompt Engineering</span>
+                        <span class="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">AWS</span>
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Azure</span>
+                        <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-2 rounded-full text-sm font-medium skill-tag">Llama Prompt Engineering</span>
                     </div>
                 </div>
             </div>
@@ -192,48 +224,48 @@
     </section>
 
     <!-- Learning Journey Section -->
-    <section id="journey" class="py-20">
+    <section id="journey" class="py-20 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Learning Journey</h2>
             <div class="max-w-4xl mx-auto">
                 <div class="space-y-8">
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
                                 🎓
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold">Current Studies</h3>
-                                <p class="text-gray-600">United International University</p>
+                                <p class="text-gray-600 dark:text-gray-300">United International University</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">Pursuing Data Science with a focus on machine learning and artificial intelligence. Engaging in coursework that covers statistics, programming, and advanced analytics.</p>
+                        <p class="text-gray-700 dark:text-gray-200">Pursuing Data Science with a focus on machine learning and artificial intelligence. Engaging in coursework that covers statistics, programming, and adv[...]
                     </div>
 
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
                                 🤖
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold">Daily Learning</h3>
-                                <p class="text-gray-600">ML & AI Frameworks</p>
+                                <p class="text-gray-600 dark:text-gray-300">ML & AI Frameworks</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">Consistently exploring new machine learning frameworks and AI technologies. Staying updated with the latest developments in the field and applying them to practical scenarios.</p>
+                        <p class="text-gray-700 dark:text-gray-200">Consistently exploring new machine learning frameworks and AI technologies. Staying updated with the latest developments in the field and applying them[...]
                     </div>
 
-                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg card-hover">
                         <div class="flex items-center mb-4">
                             <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
                                 🚀
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold">Future Goals</h3>
-                                <p class="text-gray-600">Career Aspirations</p>
+                                <p class="text-gray-600 dark:text-gray-300">Career Aspirations</p>
                             </div>
                         </div>
-                        <p class="text-gray-700">Aiming to become a skilled data scientist who can contribute to meaningful projects. Interested in areas like natural language processing, computer vision, and AI-driven solutions.</p>
+                        <p class="text-gray-700 dark:text-gray-200">Aiming to become a skilled data scientist who can contribute to meaningful projects. Interested in areas like natural language processing, computer vis[...]
                     </div>
                 </div>
             </div>
@@ -241,57 +273,57 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 hero-bg text-white">
+    <section id="contact" class="py-20 hero-bg text-white dark:text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-16">Let's Connect</h2>
-            <p class="text-center text-xl mb-16 max-w-3xl mx-auto">I'm always excited to connect with fellow data enthusiasts, students, and professionals. Let's discuss data science, AI, or potential collaborations!</p>
+            <p class="text-center text-xl mb-16 max-w-3xl mx-auto">I'm always excited to connect with fellow data enthusiasts, students, and professionals. Let's discuss data science, AI, or potential[...]
             
             <div class="max-w-4xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <a href="https://www.linkedin.com/in/nafiul-islam-739359279/" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                    <a href="https://www.linkedin.com/in/nafiul-islam-739359279/" target="_blank" class="bg-white/10 dark:bg-gray-900/20 rounded-2xl p-6 text-center hover:bg-white/20 dark:hover:bg-gray-900/30 transition-colors card-hover">
                         <div class="text-4xl mb-4">💼</div>
                         <h3 class="font-bold mb-2">LinkedIn</h3>
-                        <p class="text-sm text-gray-300">Professional Network</p>
+                        <p class="text-sm text-gray-300 dark:text-gray-400">Professional Network</p>
                     </a>
                     
-                    <a href="https://github.com/nafiul-afk" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                    <a href="https://github.com/nafiul-afk" target="_blank" class="bg-white/10 dark:bg-gray-900/20 rounded-2xl p-6 text-center hover:bg-white/20 dark:hover:bg-gray-900/30 transition-colors card-hover">
                         <div class="text-4xl mb-4">💻</div>
                         <h3 class="font-bold mb-2">GitHub</h3>
-                        <p class="text-sm text-gray-300">Code Repository</p>
+                        <p class="text-sm text-gray-300 dark:text-gray-400">Code Repository</p>
                     </a>
                     
-                    <a href="https://www.instagram.com/naf.ipynb/" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                    <a href="https://www.instagram.com/naf.ipynb/" target="_blank" class="bg-white/10 dark:bg-gray-900/20 rounded-2xl p-6 text-center hover:bg-white/20 dark:hover:bg-gray-900/30 transition-colors card-hover">
                         <div class="text-4xl mb-4">📸</div>
                         <h3 class="font-bold mb-2">Instagram</h3>
-                        <p class="text-sm text-gray-300">Learning Journey</p>
+                        <p class="text-sm text-gray-300 dark:text-gray-400">Learning Journey</p>
                     </a>
                     
-                    <a href="https://x.com/NafiulAfk" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                    <a href="https://x.com/NafiulAfk" target="_blank" class="bg-white/10 dark:bg-gray-900/20 rounded-2xl p-6 text-center hover:bg-white/20 dark:hover:bg-gray-900/30 transition-colors card-hover">
                         <div class="text-4xl mb-4">🐦</div>
                         <h3 class="font-bold mb-2">Twitter/X</h3>
-                        <p class="text-sm text-gray-300">Thoughts & Updates</p>
+                        <p class="text-sm text-gray-300 dark:text-gray-400">Thoughts & Updates</p>
                     </a>
                 </div>
                 
-                <div class="bg-white/10 rounded-2xl p-8 backdrop-blur-md">
+                <div class="bg-white/10 dark:bg-gray-900/20 rounded-2xl p-8 backdrop-blur-md">
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium mb-2">Name</label>
-                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Your Name">
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-900/30 border border-white/30 dark:border-gray-700 text-white dark:text-gray-100 placeholder-white/70 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Your Name">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="your@email.com">
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-900/30 border border-white/30 dark:border-gray-700 text-white dark:text-gray-100 placeholder-white/70 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="you@example.com">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Subject</label>
-                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Collaboration Opportunity">
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-900/30 border border-white/30 dark:border-gray-700 text-white dark:text-gray-100 placeholder-white/70 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Subject">
                         </div>
                         <div>
                             <label class="block text-sm font-medium mb-2">Message</label>
-                            <textarea rows="6" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Let's discuss data science, AI, or potential collaborations..."></textarea>
+                            <textarea rows="6" class="w-full px-4 py-3 rounded-lg bg-white/20 dark:bg-gray-900/30 border border-white/30 dark:border-gray-700 text-white dark:text-gray-100 placeholder-white/70 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Your message"></textarea>
                         </div>
                         <button type="submit" class="w-full bg-yellow-300 text-purple-800 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
                             Send Message
@@ -303,7 +335,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
@@ -324,12 +356,24 @@
     </footer>
 
     <script>
+        // Dark mode toggle
+        const darkToggle = document.getElementById('dark-toggle');
+        darkToggle.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -348,9 +392,9 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.classList.add('bg-white/95');
+                header.classList.add('bg-white/95', 'dark:bg-gray-900/95');
             } else {
-                header.classList.remove('bg-white/95');
+                header.classList.remove('bg-white/95', 'dark:bg-gray-900/95');
             }
         });
 

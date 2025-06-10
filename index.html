@@ -1,81 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nafiul Islam - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nafiul Islam - Data Science Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-xl font-bold gradient-text">Nafiul Islam</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                    <a href="#skills" class="text-gray-600 hover:text-gray-900 transition-colors">Skills</a>
+                    <a href="#journey" class="text-gray-600 hover:text-gray-900 transition-colors">Journey</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-  <header>
-    <div class="container">
-      <h1>Nafiul Islam</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div class="container">
-        <h2>Hello, I'm Nafiul Islam</h2>
-        <p>Welcome to my digital space! I'm a passionate data science student at United International University.</p>
-      </div>
-    </section>
-
-    <section id="about" class="about">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>I'm a data science student at United International University, passionate about machine learning and artificial intelligence.</p>
-        <p>Skills: Python, Pandas, NumPy, Matplotlib, Seaborn, Streamlit, Git, GitHub, AWS, Azure, Llama Prompt Engineering</p>
-      </div>
-    </section>
-
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2>Projects</h2>
-        <div class="project-grid">
-          <div class="project-card">
-            <img src="https://via.placeholder.com/400x300" alt="Project 1">
-            <h3>Project 1</h3>
-            <p>Description of project 1.</p>
-            <a href="#">View Project</a>
-          </div>
-          <div class="project-card">
-            <img src="https://via.placeholder.com/400x300" alt="Project 2">
-            <h3>Project 2</h3>
-            <p>Description of project 2.</p>
-            <a href="#">View Project</a>
-          </div>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 hero-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+                        Hi, I'm <span class="text-yellow-300">Nafiul</span>
+                    </h1>
+                    <p class="text-xl mb-8 leading-relaxed">
+                        I am a <strong>Data Science Student</strong> at United International University, passionate about machine learning and AI. I'm constantly learning and exploring:
+                    </p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center">
+                            <span class="text-yellow-300 mr-3">→</span>
+                            <span>Machine Learning & AI frameworks daily</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-yellow-300 mr-3">→</span>
+                            <span>Data analysis and visualization techniques</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-yellow-300 mr-3">→</span>
+                            <span>Cloud computing with AWS and Azure</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-yellow-300 mr-3">→</span>
+                            <span>Prompt engineering with Llama models</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Get In Touch
+                        </a>
+                        <a href="#skills" class="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                            View Skills
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="w-80 h-80 bg-white/10 rounded-3xl flex items-center justify-center animate-float">
+                        <div class="text-6xl">🤖</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Contact Me</h2>
-        <p>You can reach me at: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>
-          <a href="https://www.instagram.com/naf.ipynb/">Instagram</a> |
-          <a href="https://x.com/NafiulAfk">X (Twitter)</a> |
-          <a href="https://www.linkedin.com/in/nafiul-islam-739359279/">LinkedIn</a> |
-          <a href="https://github.com/nafiul-afk">GitHub</a>
-        </p>
-      </div>
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">About Me</h2>
+            <div class="max-w-4xl mx-auto text-lg leading-relaxed space-y-6">
+                <p>I'm Nafiul Islam, a dedicated Data Science student at United International University with a passion for artificial intelligence and machine learning. My journey in data science is driven by curiosity and the desire to solve real-world problems through data-driven insights.</p>
+                <p>Every day, I immerse myself in learning new ML and AI frameworks, constantly expanding my knowledge and skills. From data manipulation with Pandas to creating interactive visualizations with Streamlit, I'm building a comprehensive toolkit for data science.</p>
+                <p>I believe in the power of continuous learning and staying updated with the latest trends in AI and machine learning. My goal is to contribute to innovative projects that make a positive impact on society through intelligent data solutions.</p>
+                <p>When I'm not coding or studying, you can find me exploring new datasets, experimenting with different algorithms, or sharing my learning journey on social media.</p>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Nafiul Islam. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Skills</h2>
+            <p class="text-center text-xl mb-16 max-w-3xl mx-auto">Here are the technologies and tools I'm working with in my data science journey.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">🐍</div>
+                    <h3 class="text-2xl font-bold mb-4">Programming</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Python</span>
+                    </div>
+                </div>
 
+                <!-- Data Analysis -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-4">Data Analysis</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Pandas</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">NumPy</span>
+                    </div>
+                </div>
+
+                <!-- Data Visualization -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">📈</div>
+                    <h3 class="text-2xl font-bold mb-4">Visualization</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-yellow-100 text-yellow-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Matplotlib</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <!-- Web Apps -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h3 class="text-2xl font-bold mb-4">Web Applications</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-red-100 text-red-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Streamlit</span>
+                    </div>
+                </div>
+
+                <!-- Version Control -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-2xl font-bold mb-4">Version Control</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Git</span>
+                        <span class="bg-black text-white px-3 py-2 rounded-full text-sm font-medium skill-tag">GitHub</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & AI -->
+                <div class="bg-gray-50 rounded-2xl p-8 card-hover">
+                    <div class="text-4xl mb-4">☁️</div>
+                    <h3 class="text-2xl font-bold mb-4">Cloud & AI</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-orange-100 text-orange-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">AWS</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Azure</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-2 rounded-full text-sm font-medium skill-tag">Llama Prompt Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Journey Section -->
+    <section id="journey" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">My Learning Journey</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                🎓
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Current Studies</h3>
+                                <p class="text-gray-600">United International University</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">Pursuing Data Science with a focus on machine learning and artificial intelligence. Engaging in coursework that covers statistics, programming, and advanced analytics.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                🤖
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Daily Learning</h3>
+                                <p class="text-gray-600">ML & AI Frameworks</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">Consistently exploring new machine learning frameworks and AI technologies. Staying updated with the latest developments in the field and applying them to practical scenarios.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                                🚀
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Future Goals</h3>
+                                <p class="text-gray-600">Career Aspirations</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700">Aiming to become a skilled data scientist who can contribute to meaningful projects. Interested in areas like natural language processing, computer vision, and AI-driven solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 hero-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16">Let's Connect</h2>
+            <p class="text-center text-xl mb-16 max-w-3xl mx-auto">I'm always excited to connect with fellow data enthusiasts, students, and professionals. Let's discuss data science, AI, or potential collaborations!</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <a href="https://www.linkedin.com/in/nafiul-islam-739359279/" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                        <div class="text-4xl mb-4">💼</div>
+                        <h3 class="font-bold mb-2">LinkedIn</h3>
+                        <p class="text-sm text-gray-300">Professional Network</p>
+                    </a>
+                    
+                    <a href="https://github.com/nafiul-afk" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                        <div class="text-4xl mb-4">💻</div>
+                        <h3 class="font-bold mb-2">GitHub</h3>
+                        <p class="text-sm text-gray-300">Code Repository</p>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/naf.ipynb/" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                        <div class="text-4xl mb-4">📸</div>
+                        <h3 class="font-bold mb-2">Instagram</h3>
+                        <p class="text-sm text-gray-300">Learning Journey</p>
+                    </a>
+                    
+                    <a href="https://x.com/NafiulAfk" target="_blank" class="bg-white/10 rounded-2xl p-6 text-center hover:bg-white/20 transition-colors card-hover">
+                        <div class="text-4xl mb-4">🐦</div>
+                        <h3 class="font-bold mb-2">Twitter/X</h3>
+                        <p class="text-sm text-gray-300">Thoughts & Updates</p>
+                    </a>
+                </div>
+                
+                <div class="bg-white/10 rounded-2xl p-8 backdrop-blur-md">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Collaboration Opportunity">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Message</label>
+                            <textarea rows="6" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-yellow-300" placeholder="Let's discuss data science, AI, or potential collaborations..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-yellow-300 text-purple-800 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-xl font-bold gradient-text">Nafiul Islam</div>
+                    <p class="text-gray-400">Data Science Student</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/nafiul-islam-739359279/" target="_blank" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+                    <a href="https://github.com/nafiul-afk" target="_blank" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                    <a href="https://x.com/NafiulAfk" target="_blank" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
+                    <a href="https://www.instagram.com/naf.ipynb/" target="_blank" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Nafiul Islam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/95');
+            } else {
+                header.classList.remove('bg-white/95');
+            }
+        });
+
+        // Add interactive skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>
